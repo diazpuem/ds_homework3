@@ -1,4 +1,4 @@
 
 public interface CapitalizerAndTimeWorker {
-    void sendString(String hostname);
+    void sendString();
 }
