@@ -16,11 +16,9 @@ public class ServerThread extends Thread {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(this.socket.getOutputStream());
             RpcRequest rpcRequest = null;
             do {
-                System.out.println("LEYENDO OBJETO QUE VIENE ");
                 Object object = objectInputStream.readObject();
                 Object result;
                 if (object instanceof RpcRequest) {
-                    System.out.println("LEYENDO OBJETO QUE VIENE");
                     rpcRequest = (RpcRequest) object;
                     if ("time".equals(rpcRequest.getInput())) {
                         result = new Date();
@@ -30,7 +28,6 @@ public class ServerThread extends Thread {
                 } else {
                     throw new InternalError();
                 }
-                System.out.println("RESPONDIENDO AL CLIENTE");
                 objectOutputStream.writeObject(result.toString());
             } while(!rpcRequest.getInput().isEmpty());
             this.socket.close();

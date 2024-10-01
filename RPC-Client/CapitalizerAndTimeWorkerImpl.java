@@ -25,18 +25,12 @@ public class CapitalizerAndTimeWorkerImpl implements CapitalizerAndTimeWorker {
             do {
                 System.out.println("Please enter an input: ");
                 textInput = scanner.nextLine();
-                System.out.println("GENERANDO REQUEST");
                 RpcRequest rpcRequest = generateRequest(textInput);
-                System.out.println(rpcRequest);
-                System.out.println("LLEVANDO ENVIANDO AL SERVER REQUEST");
                 objectOutputStream.writeObject(rpcRequest);
-                System.out.println("RECIBIENDO RESPUESTA");
                 Object response = objectInputStream.readObject();
                 if (response instanceof String) {
-                    System.out.println("ES UN STRING");
                     System.out.println(response);
                 } else {
-                    System.out.println("TIRANDO ERROR");
                     throw new InternalError();
                 }
             } while (!textInput.isEmpty());

@@ -13,11 +13,4 @@ public class RpcRequest implements Serializable {
     public String getInput() {
         return input;
     }
-
-    @Override
-    public String toString() {
-        return "RpcRequest{" +
-                "input='" + input + '\'' +
-                '}';
-    }
 }

@@ -17,7 +17,6 @@ public class ProviderApp {
                 new ServerThread(socket).start();
             } catch (Exception e) {
             	System.out.println("error!");
-                System.out.println(e.getMessage());
             } 
         }
     } 
