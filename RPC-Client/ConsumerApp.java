@@ -7,6 +7,7 @@ public class ConsumerApp {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter IP address: ");
         String host = scanner.nextLine();
+        scanner.close();
         CapitalizerAndTimeWorker worker = new CapitalizerAndTimeWorkerImpl();
         worker.sendString(host);
     }
