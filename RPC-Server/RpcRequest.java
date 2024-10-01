@@ -1,9 +1,7 @@
-import java.io.Serial;
 import java.io.Serializable;
 
 public class RpcRequest implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 7503710091945320739L;
 
     private String input;
