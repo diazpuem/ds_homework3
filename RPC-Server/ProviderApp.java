@@ -11,16 +11,13 @@ public class ProviderApp {
     private void begin() throws IOException {
         ServerSocket listener = new ServerSocket(9090);
         System.out.println("The Server is running");
-        int numberOfClients = 0;
         while (true) {
             Socket socket = listener.accept();
             try {
-                OutputStream output = socket.getOutputStream();
-                PrintWriter writer = new PrintWriter(output, true);
-                writer.println("Hello you are client #" + ++numberOfClients);
                 new ServerThread(socket).start();
             } catch (Exception e) {
             	System.out.println("error!");
+                System.out.println(e.getMessage());
             } 
         }
     } 

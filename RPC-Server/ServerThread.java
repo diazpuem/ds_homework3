@@ -13,7 +13,7 @@ public class ServerThread extends Thread {
     public void run() {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(this.socket.getInputStream());
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(this.socket.getOutputStream());
             RpcRequest rpcRequest = null;
             do {
                 Object object = objectInputStream.readObject();
@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
                 }
                 objectOutputStream.writeObject(result.toString());
             } while(!rpcRequest.getInput().isEmpty());
-            socket.close();
+            this.socket.close();
         } catch (Exception e) {
             System.out.println("error!");
         }
